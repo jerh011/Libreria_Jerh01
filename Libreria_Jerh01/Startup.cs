@@ -1,5 +1,6 @@
 using Libreria_Jerh01.Data;
 using Libreria_Jerh01.Data.Sercices;
+using Libreria_Jerh01.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,7 +38,10 @@ namespace Libreria_Jerh01
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(ConnectionString));
             //Configurar el servicio para que pueda ser usado
-           services.AddTransient<BooksService>();
+            services.AddTransient<BooksService>();
+            services.AddTransient<AuthorsService>();              
+            services.AddTransient<PublisherService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Libreria_Jerh01", Version = "v1" });
@@ -62,7 +66,7 @@ namespace Libreria_Jerh01
             {
                 endpoints.MapControllers();
             });
-            AppDbInitializer.Seed(app);
+           // AppDbInitializer.Seed(app);
         }
     }
 }

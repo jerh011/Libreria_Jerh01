@@ -33,13 +33,15 @@ namespace Libreria_Jerh01.Data.Sercices
             _context.Books.Add(_book);
             _context.SaveChanges();
         }
-      /*  //Metodo que nos permite optener una lista de todos los libros
-        public List<Book> GetAllBks() => _context.Books.ToList();
+       //Metodo que nos permite optener una lista de todos los libros
+        public List<Books> GetAllBks() => _context.Books.ToList();
         //Metodo que nos permite optener el libro que estamos pidiendo de la BD
-        public Book GetBookById(int bookid) => _context.Books.FirstOrDefault(n => n.Id == bookid);
+        public Books GetBookById(int bookid) => _context.Books.FirstOrDefault(n => n.Id == bookid);
         //metodo que nos permite modificar un libro que se encuentra en la BD
 
-        public Book UpdateBookByID(int bookid, BookVM book)
+
+
+        public Books UpdateBookByID(int bookid, BookVM book)
         {
             var _book = _context.Books.FirstOrDefault(n => n.Id == bookid);
             if (_book != null)
@@ -66,6 +68,6 @@ namespace Libreria_Jerh01.Data.Sercices
                 _context.SaveChanges();
 
             }
-        }*/
+        }
     }
 }

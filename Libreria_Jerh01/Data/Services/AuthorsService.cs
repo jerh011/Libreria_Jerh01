@@ -2,6 +2,8 @@
 using Libreria_Jerh01.Data.Models;
 using Libreria_Jerh01.Data.ViewModels;
 using System;
+using System.Linq;
+
 namespace Libreria_Jerh01.Data.Services
 {
     public class AuthorsService
@@ -17,11 +19,18 @@ namespace Libreria_Jerh01.Data.Services
             var _author = new Author()
             {
                 FullName = author.FullName
-                
-
             };
             _context.Authors.Add(_author);
             _context.SaveChanges();
         }
-    }
+        public AuthorWithBooksVM GetAuthorWithBooksVM(int authorId)
+        {
+            var _author = _context.Authors.Where(n => n.Id == authorId).Select(n => new AuthorWithBooksVM()
+            {
+                FullName =n.FullName,
+                BookTitles=n.Books_Authors.Select(n=>n.Book.Titulo).ToList()
+                }).FirstOrDefault();
+            return _author;
+        }
+    } 
 }

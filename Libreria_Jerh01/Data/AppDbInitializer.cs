@@ -26,7 +26,6 @@ namespace Libreria_Jerh01.Data
                         DateRead=DateTime.Now.AddDays(-10),
                         Rate=4,
                         Genero="Biograpgy",
-                        Autor="1st Autor",
                         CoverUrl="https...",
                         DateAdded= DateTime.Now
                         },
@@ -36,7 +35,6 @@ namespace Libreria_Jerh01.Data
                             Descripcion = "2nd Book Description",
                             IsRead = true,
                             Genero = "Biograpgy",
-                            Autor = "1st Autor",
                             CoverUrl = "https...",
                             DateAdded = DateTime.Now
                         });

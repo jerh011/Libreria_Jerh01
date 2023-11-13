@@ -1,9 +1,9 @@
-﻿using Libreria_JERH.Data.ViewModels;
+﻿using Libreria_Jerh01.Data.ViewModels;
 using Libreria_Jerh01.Data.Sercices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Libreria_JERH.Controllers
+namespace Libreria_Jerh01.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -30,10 +30,10 @@ namespace Libreria_JERH.Controllers
             return Ok(book);
         }
         
-        [HttpPost("Add-Book")]
+        [HttpPost("Add-Book-with-authors")]
         public IActionResult AddBook([FromBody] BookVM book)
         {
-            _booksService.AddBook(book);
+            _booksService.AddBookWithAuthors(book);
             return Ok();
         }
         

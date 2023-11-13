@@ -63,9 +63,6 @@ namespace Libreria_Jerh01.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Autor")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("CoverUrl")
                         .HasColumnType("nvarchar(max)");
 

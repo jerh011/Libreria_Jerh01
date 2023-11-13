@@ -13,14 +13,13 @@ namespace Libreria_Jerh01.Data.Models
         public DateTime? DateRead { get; set; }
         public int? Rate { get; set; }
         public string Genero { get; set; }
-        public string Autor { get; set; }
         public string CoverUrl { get; set; }
         public DateTime? DateAdded { get; set; }
 
         //Propiedades de navegacion
         
         public int PublisherId { get; set; }
-        public Publisher Publishe { get; set; }
+        public Publisher Publisher { get; set; }
         public List<Book_Author> Book_Authors { get; set; }
     }
 }

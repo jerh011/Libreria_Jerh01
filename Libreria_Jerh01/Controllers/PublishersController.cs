@@ -18,5 +18,12 @@ namespace Libreria_Jerh01.Controllers
             return Ok();
         }
 
+        [HttpGet ("get-publisher-books-with-authors/{id}")]
+        public IActionResult GetPublisherData (int id)
+        {
+            var _response=_publisherService.GetPublisherData(id);
+            return Ok(_response);
+        }
+
     }
 }

@@ -1,8 +1,10 @@
 ﻿
 using Libreria_Jerh01.Data.Models;
 using Libreria_Jerh01.Data.ViewModels;
+using Libreria_Jerh01.Exceptions;
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Libreria_Jerh01.Data.Services
 {
@@ -14,8 +16,9 @@ namespace Libreria_Jerh01.Data.Services
             _context = context;
         }
         //metodos para agregar un nuevo Author en BD
-        public void AddAuthor(PublisherVM publisher)
+        public Publisher AddAuthor(PublisherVM publisher)
         {
+            if (StringStartsWithNumber(publisher.Name)) throw new PublisherNameException("El nombre empieza con un numero",publisher.Name);
             var _publisher = new Publisher()
             {
                 Name = publisher.Name
@@ -23,6 +26,7 @@ namespace Libreria_Jerh01.Data.Services
             };
             _context.Publishers.Add(_publisher);
             _context.SaveChanges();
+            return _publisher;
         }
 
         public PublisherWithBooksAndAuthorsVM GetPublisherData(int publisherId)
@@ -51,6 +55,9 @@ namespace Libreria_Jerh01.Data.Services
             else
                 throw new Exception($"La directiva con el id: {id} no existe!");
         }
+
+        private bool StringStartsWithNumber(string name) => (Regex.IsMatch(name, @"^\d"));
+        
     
     }
 }

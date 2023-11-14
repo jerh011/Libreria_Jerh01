@@ -1,7 +1,7 @@
 ﻿using Libreria_Jerh01.Data.Services;
 using Libreria_Jerh01.Data.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-
+using System;
 namespace Libreria_Jerh01.Controllers
 {
     public class PublishersController : Controller
@@ -14,8 +14,17 @@ namespace Libreria_Jerh01.Controllers
         [HttpPost("Add-publisher")]
         public IActionResult Addublisher([FromBody] PublisherVM author)
         {
-            _publisherService.AddAuthor(author);
-            return Ok();
+            try
+            {
+                _publisherService.AddAuthor(author);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+           
         }
 
         [HttpGet ("get-publisher-books-with-authors/{id}")]
@@ -28,8 +37,17 @@ namespace Libreria_Jerh01.Controllers
         [HttpDelete("delete-publisher-by-id/{id}")]
         public IActionResult DeletePublisherById (int id)
         {
-            _publisherService.DeletePublisherById(id);
-            return Ok();
-        }
+            try
+            {  
+                _publisherService.DeletePublisherById(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+          
+            
+         }
     }
 }

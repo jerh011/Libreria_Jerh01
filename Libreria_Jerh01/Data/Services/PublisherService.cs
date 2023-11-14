@@ -48,6 +48,8 @@ namespace Libreria_Jerh01.Data.Services
                 _context.Publishers.Remove(_publisher);
                 _context.SaveChanges();
             }
+            else
+                throw new Exception($"La directiva con el id: {id} no existe!");
         }
     
     }
